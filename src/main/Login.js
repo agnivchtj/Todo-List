@@ -14,13 +14,18 @@ class Login extends React.Component {
 
         this.state = {
             username: '',
-            password: ''};
+            password: ''
+        };
     }
 
-    verifyToken() {
-        const authToken = '123456abcdef';
+    signIn = (e) => {
+        e.preventDefault();
 
-        return (sessionStorage.getItem('auth-token') && sessionStorage.getItem('auth-token') === authToken);
+        if ((this.state.username === 'user') && (this.state.password === 'pass')) {
+            window.location.href = '/main';
+        } else {
+            alert('Wrong email or password combination');
+        }
     }
 
     render() {
@@ -69,25 +74,7 @@ class Login extends React.Component {
                                     size="large"
                                     color="primary"
                                     id="button"
-                                    onClick={
-                                        (event) => {
-                                            event.preventDefault();
-                                            
-                                            let creds = {
-                                                username: 'user',
-                                                password: 'pass'
-                                            }
-            
-                                            if ((this.state.username === creds.username) && (this.state.password === creds.password)) {
-                                                const token = '123456abcdef';
-                                                sessionStorage.setItem('auth-token', token);
-                                                if (this.verifyToken()) window.location.href = '/main';
-                                            } else {
-                                                alert('Wrong email or password combination');
-                                            }
-
-                                        }
-                                    }
+                                    onClick={(event) => this.signIn(event)}
                                 >
                                     Login
                                 </Button>

@@ -221,6 +221,10 @@ class Main extends React.Component {
         }
     }
 
+    signOut = () => {
+        window.location.href = '/';
+    }
+
 
     render() {
         let theme = createMuiTheme({
@@ -249,7 +253,7 @@ class Main extends React.Component {
                             className='button'
                             variant='contained'
                             style={{ margin: 'auto', display: 'block' }}
-                            onClick={() => {window.location.href = '/';}}
+                            onClick={this.signOut}
                         >
                             Logout
                         </Button>
@@ -278,7 +282,7 @@ class Main extends React.Component {
                             className='button'
                             variant='contained'
                             style={{ margin: 'auto', display: 'block' }}
-                            onClick={() => {window.location.href = '/';}}
+                            onClick={this.signOut}
                         >
                             Logout
                         </Button>
